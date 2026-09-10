@@ -1,0 +1,82 @@
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/CormorantGaramond-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/Raleway-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/Raleway-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-family: "Raleway", sans-serif;
+  min-height: 100vh;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.navbar-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.navbar-links a {
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  opacity: 0.5;
+}

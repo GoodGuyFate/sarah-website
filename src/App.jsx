@@ -1,13 +1,17 @@
-import './App.css'
+import { useState } from "react";
+import Navbar from "./components/Navbar";
 
 function App() {
+  const [currentView, setCurrentView] = useState("home");
+
   return (
-    <div>
-      <h1>Sarah's Website</h1>
+    <div className="app">
+      <Navbar currentView={currentView} onNavigate={setCurrentView} />
+      <main className="main-content">
+        <p>Current view: {currentView}</p>
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
-
-
+export default App;
