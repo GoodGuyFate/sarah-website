@@ -49,6 +49,21 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+.navbar-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: center;
+}
+.navbar-subtitle {
+  font-family: "Raleway", sans-serif;
+  margin-top: -0.4rem;
+  font-weight: 300;
+  font-size: 0.75rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+}
 .navbar-name {
   font-family: "Cormorant Garamond", serif;
   font-size: 3.5rem;
@@ -91,14 +106,18 @@ body {
 .navbar-links a {
   letter-spacing: 0.25em;
 }
+.navbar-links a.active {
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 2px;
+}
 .main-content {
-  margin-top: 0;
+  min-height: calc(100vh - 200px);
+  margin-top: 130px;
   padding: 0 2rem;
   display: flex;
   justify-content: center;
 }
 .slideshow {
-
   width: 100%;
   max-width: 1200px;
 }
@@ -119,14 +138,14 @@ body {
   align-items: center;
 }
 .navbar-socials a {
-  color: #1a1a1a;
-  opacity: 0.6;
+  color: #292929;
+  opacity: 1;
   transition: opacity 0.2s ease;
   display: flex;
   align-items: center;
 }
 .navbar-socials a:hover {
-  opacity: 1;
+  opacity: 0.5;
 }
 .navbar-socials svg {
   width: 24px;
@@ -144,16 +163,15 @@ body {
   letter-spacing: 0.03em;
   color: #555555;
 }
-
 .home-cta {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
 }
 .cta-btn {
-  background: transparent;
-  border: 1px solid #1a1a1a;
-  color: #1a1a1a;
+  background-color: #292929;
+  border: 1px solid #292929;
+  color: #ffffff;
   font-family: "Raleway", sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
@@ -164,9 +182,100 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 .cta-btn:hover {
-  background-color: #1a1a1a;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #292929;
 }
+
+
+.gallery {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem 0;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.gallery-item img:hover {
+  opacity: 0.85;
+}
+.gallery-status {
+  color: #999;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  margin-top: 2rem;
+}
+.page-title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+.lightbox-close:hover {
+  opacity: 1;
+}
+.lightbox-swiper {
+  position: relative;
+  z-index: 1;
+  width: 90vw;
+  height: 90vh;
+}
+.lightbox-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.lightbox-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff !important;
+}
+
+
+
 
 
 
@@ -180,4 +289,14 @@ body {
   font-weight: 300;
   letter-spacing: 0.1em;
   color: #999999;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-transition {
+  animation: fadeIn 0.3s ease forwards;
 }

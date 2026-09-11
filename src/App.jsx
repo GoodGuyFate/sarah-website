@@ -1,17 +1,19 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Slideshow from "./components/Slideshow";
+import Gallery from "./components/Gallery";
 import Footer from "./components/Footer";
 
 function App() {
   const [currentView, setCurrentView] = useState("home");
+  const [imageCache, setImageCache] = useState(null);
 
   return (
     <div className="app">
       <Navbar currentView={currentView} onNavigate={setCurrentView} />
       <main className="main-content">
         {currentView === "home" && (
-          <div className="home">
+          <div className="home page-transition">
             <Slideshow />
             <div className="home-intro">
               <p>
@@ -29,8 +31,13 @@ function App() {
             </div>
           </div>
         )}
-        {currentView === "about" && <p>About page coming soon</p>}
-        {currentView === "contact" && <p>Contact page coming soon</p>}
+        {currentView === "gallery" && (
+          <div className="page-transition">
+            <Gallery imageCache={imageCache} setImageCache={setImageCache} />
+          </div>
+        )}
+        {currentView === "about" && <div className="page-transition"><p>About coming soon</p></div>}
+        {currentView === "contact" && <div className="page-transition"><p>Contact coming soon</p></div>}
       </main>
       <Footer />
     </div>
