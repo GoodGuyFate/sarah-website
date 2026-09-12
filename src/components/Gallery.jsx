@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Keyboard } from "swiper/modules";
-import "swiper/css";
+import { Navigation, Keyboard, Zoom } from "swiper/modules";
+import "swiper/css/zoom";
 import "swiper/css/navigation";
 
 function Lightbox({ images, startIndex, onClose }) {
@@ -25,13 +25,15 @@ function Lightbox({ images, startIndex, onClose }) {
           modules={[Navigation, Keyboard]}
           navigation
           keyboard={{ enabled: true }}
+          zoom={{ enabled: true, maxRatio: 3 }}
           initialSlide={startIndex}
           speed={400}
           style={{ width: "100%", height: "100%" }}
+          
         >
           {images.map((image) => (
             <SwiperSlide key={image.id}>
-              <div className="lightbox-slide">
+              <div className="swiper-zoom-container">
                 <img src={image.url} alt={image.name} />
               </div>
             </SwiperSlide>
