@@ -74,6 +74,23 @@ function Gallery({ imageCache, setImageCache }) {
     };
   }, [lightboxIndex]);
 
+  useEffect(() => {
+    if (lightboxIndex !== null) {
+      window.history.pushState({ lightbox: true }, "");
+    }
+  }, [lightboxIndex]);
+
+  useEffect(() => {
+    function handlePopState() {
+      if (lightboxIndex !== null) {
+        setLightboxIndex(null);
+        window.history.pushState({ lightbox: false }, "");
+      }
+    }
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [lightboxIndex]);
+
   if (loading) return <p className="gallery-status">Loading...</p>;
   if (error) return <p className="gallery-status">{error}</p>;
 
