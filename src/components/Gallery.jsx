@@ -22,7 +22,7 @@ function Lightbox({ images, startIndex, onClose }) {
       </button>
       <div className="lightbox-swiper">
         <Swiper
-          modules={[Navigation, Keyboard]}
+          modules={[Navigation, Keyboard, Zoom]}
           navigation
           keyboard={{ enabled: true }}
           zoom={{ enabled: true, maxRatio: 3 }}
