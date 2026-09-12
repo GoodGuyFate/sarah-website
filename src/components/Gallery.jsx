@@ -15,12 +15,8 @@ function Lightbox({ images, startIndex, onClose }) {
   }, [onClose]);
 
   return createPortal(
-    <div
-      className="lightbox"
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
-      }}
-    >
+    <div className="lightbox">
+      <div className="lightbox-backdrop" onClick={onClose} />
       <button className="lightbox-close" onClick={onClose}>
         ✕
       </button>

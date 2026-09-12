@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination, Keyboard } from "swiper/modules";
 import "swiper/css";
 
 const slides = [
@@ -13,25 +13,21 @@ function Slideshow() {
   return (
     <div className="slideshow">
       <Swiper
-        modules={[Autoplay, Navigation, Pagination]}
+        modules={[Autoplay, Navigation, Pagination, Keyboard]}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         navigation
         pagination={{ clickable: true }}
+        keyboard={{ enabled: true }}
         loop
         speed={1000}
         style={{ width: "100%", height: "100%" }}
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <img
-              src={slide.src}
-              alt={slide.alt}
-              className="slideshow-img"
-            />
+            <img src={slide.src} alt={slide.alt} className="slideshow-img" />
           </SwiperSlide>
         ))}
       </Swiper>
-      
     </div>
   );
 }

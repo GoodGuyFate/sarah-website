@@ -1,5 +1,9 @@
 import { useState } from "react";
 
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -7,10 +11,19 @@ function Contact() {
   const [status, setStatus] = useState(null);
 
   async function handleSubmit() {
-    if (!name || !email || !message) {
-      setStatus("error");
+    if (!name.trim()) {
+      setStatus("name-error");
       return;
     }
+    if (!email.trim() || !validateEmail(email)) {
+      setStatus("email-error");
+      return;
+    }
+    if (!message.trim()) {
+      setStatus("message-error");
+      return;
+    }
+
     setStatus("sending");
     try {
       const response = await fetch("/api/contact", {
@@ -50,7 +63,10 @@ function Contact() {
               type="text"
               placeholder="Your Name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => {
+                setName(e.target.value);
+                if (status === "name-error") setStatus(null);
+              }}
             />
           </div>
           <div className="form-group">
@@ -58,7 +74,10 @@ function Contact() {
               type="email"
               placeholder="Your Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (status === "email-error") setStatus(null);
+              }}
             />
           </div>
           <div className="form-group">
@@ -66,10 +85,24 @@ function Contact() {
               placeholder="Your Message"
               rows="6"
               value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => {
+                setMessage(e.target.value);
+                if (status === "message-error") setStatus(null);
+              }}
             />
           </div>
 
+          {status === "name-error" && (
+            <p className="form-status error">Please enter your name.</p>
+          )}
+          {status === "email-error" && (
+            <p className="form-status error">
+              Please enter a valid email address.
+            </p>
+          )}
+          {status === "message-error" && (
+            <p className="form-status error">Please enter a message.</p>
+          )}
           {status === "success" && (
             <p className="form-status success">Message sent successfully!</p>
           )}
