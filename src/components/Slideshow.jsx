@@ -21,6 +21,7 @@ function Slideshow() {
         loop
         speed={1000}
         style={{ width: "100%", height: "100%" }}
+        touchStartPreventDefault={false}
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={slide.id}>
