@@ -2,7 +2,9 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Slideshow from "./components/Slideshow";
 import Gallery from "./components/Gallery";
+import About from "./components/About";
 import Footer from "./components/Footer";
+
 
 function App() {
   const [currentView, setCurrentView] = useState("home");
@@ -36,7 +38,7 @@ function App() {
             <Gallery imageCache={imageCache} setImageCache={setImageCache} />
           </div>
         )}
-        {currentView === "about" && <div className="page-transition"><p>About coming soon</p></div>}
+        {currentView === "about" && <About />}
         {currentView === "contact" && <div className="page-transition"><p>Contact coming soon</p></div>}
       </main>
       <Footer />

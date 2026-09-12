@@ -275,6 +275,37 @@ body {
 }
 
 
+.about-inner {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem 0;
+}
+.about-photo-wrap {
+  flex-shrink: 0;
+}
+.about-photo {
+  width: 380px;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+.about-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 0.5rem;
+}
+.about-text {
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  color: #555555;
+}
 
 
 
