@@ -22,9 +22,9 @@ function Slideshow() {
         speed={1000}
         style={{ width: "100%", height: "100%" }}
       >
-        {slides.map((slide) => (
+        {slides.map((slide, index) => (
           <SwiperSlide key={slide.id}>
-            <img src={slide.src} alt={slide.alt} className="slideshow-img" />
+            <img src={slide.src} alt={slide.alt} className="slideshow-img" fetchPriority={index === 0 ? "high" : undefined} loading={index === 0 ? "eager" : "lazy"}/>
           </SwiperSlide>
         ))}
       </Swiper>
