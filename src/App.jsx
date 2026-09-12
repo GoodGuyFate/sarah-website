@@ -11,6 +11,7 @@ function App() {
   const [currentView, setCurrentView] = useState("home");
   const [imageCache, setImageCache] = useState(null);
   const [viewHistory, setViewHistory] = useState([]);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   // Push a fake history entry on load
   useEffect(() => {
@@ -21,6 +22,7 @@ function App() {
   useEffect(() => {
     function handlePopState() {
       window.history.pushState({ view: currentView }, "");
+      if (lightboxOpen) return; // let Gallery handle it
       if (viewHistory.length > 0) {
         const prev = viewHistory[viewHistory.length - 1];
         setViewHistory((h) => h.slice(0, -1));
@@ -29,7 +31,7 @@ function App() {
     }
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
-  }, [viewHistory, currentView]);
+  }, [viewHistory, currentView, lightboxOpen]);
 
   function navigateTo(view) {
     setViewHistory((h) => [...h, { view: currentView }]);
@@ -67,7 +69,11 @@ function App() {
         )}
         {currentView === "gallery" && (
           <div className="page-transition">
-            <Gallery imageCache={imageCache} setImageCache={setImageCache} />
+            <Gallery
+              imageCache={imageCache}
+              setImageCache={setImageCache}
+              onLightboxChange={setLightboxOpen}
+            />
           </div>
         )}
         {currentView === "about" && <About />}

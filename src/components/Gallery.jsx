@@ -43,7 +43,7 @@ function Lightbox({ images, startIndex, onClose }) {
   );
 }
 
-function Gallery({ imageCache, setImageCache }) {
+function Gallery({ imageCache, setImageCache, onLightboxChange }) {
   const [loading, setLoading] = useState(!imageCache);
   const [error, setError] = useState(null);
   const [lightboxIndex, setLightboxIndex] = useState(null);
@@ -81,6 +81,10 @@ function Gallery({ imageCache, setImageCache }) {
   }, [lightboxIndex]);
 
   useEffect(() => {
+    onLightboxChange(lightboxIndex !== null);
+  }, [lightboxIndex]);
+
+  useEffect(() => {
     function handlePopState() {
       if (lightboxIndex !== null) {
         setLightboxIndex(null);
@@ -93,6 +97,8 @@ function Gallery({ imageCache, setImageCache }) {
 
   if (loading) return <p className="gallery-status">Loading...</p>;
   if (error) return <p className="gallery-status">{error}</p>;
+
+  
 
   return (
     <div className="gallery">
