@@ -1,6 +1,19 @@
+import { useState, useEffect } from "react";
+
 function Navbar({ currentView, onNavigate }) {
+
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      setScrolled(window.scrollY > 10);
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  
   return (
-    <header className="navbar">
+    <header className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
       <div className="navbar-inner">
         <div className="navbar-brand">
           <a
