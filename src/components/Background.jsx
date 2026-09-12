@@ -55,9 +55,7 @@ function Background({ view }) {
   };
 
   return (
-    <div className="bg-splash-wrap">
-      {splashes[view] || splashes.home}
-    </div>
+    <div className="bg-splash-wrap">{splashes[view] || splashes.home}</div>
   );
 }
 

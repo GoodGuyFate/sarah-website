@@ -25,7 +25,13 @@ function Slideshow() {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={slide.id}>
-            <img src={slide.src} alt={slide.alt} className="slideshow-img" fetchPriority={index === 0 ? "high" : undefined} loading={index === 0 ? "eager" : "lazy"}/>
+            <img
+              src={slide.src}
+              alt={slide.alt}
+              className="slideshow-img"
+              fetchPriority={index === 0 ? "high" : undefined}
+              loading={index === 0 ? "eager" : "lazy"}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

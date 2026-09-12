@@ -29,7 +29,6 @@ function Lightbox({ images, startIndex, onClose }) {
           initialSlide={startIndex}
           speed={400}
           style={{ width: "100%", height: "100%" }}
-          
         >
           {images.map((image) => (
             <SwiperSlide key={image.id}>
@@ -99,8 +98,6 @@ function Gallery({ imageCache, setImageCache, onLightboxChange }) {
 
   if (loading) return <p className="gallery-status">Loading...</p>;
   if (error) return <p className="gallery-status">{error}</p>;
-
-  
 
   return (
     <div className="gallery">
