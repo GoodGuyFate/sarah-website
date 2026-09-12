@@ -308,6 +308,60 @@ body {
 }
 
 
+.contact-inner {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem 0;
+}
+.contact-text-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.contact-form-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  color: #1a1a1a;
+  padding: 0.75rem 1rem;
+  font-family: "Raleway", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  outline: none;
+  transition: border-color 0.2s ease;
+  resize: none;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #1a1a1a;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaaaaa;
+}
+.form-status {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+}
+.form-status.success {
+  color: #4a7c59;
+}
+.form-status.error {
+  color: #c0392b;
+}
+
 
 
 .footer {

@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Slideshow from "./components/Slideshow";
 import Gallery from "./components/Gallery";
 import About from "./components/About";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 
@@ -39,7 +40,7 @@ function App() {
           </div>
         )}
         {currentView === "about" && <About />}
-        {currentView === "contact" && <div className="page-transition"><p>Contact coming soon</p></div>}
+        {currentView === "contact" && <Contact />}
       </main>
       <Footer />
     </div>

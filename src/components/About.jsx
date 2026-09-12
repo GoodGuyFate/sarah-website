@@ -10,6 +10,7 @@ function About() {
           />
         </div>
         <div className="about-text-wrap">
+          <h2 className="page-title">About</h2>
           <p className="about-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
