@@ -1,35 +1,36 @@
+import { v2 as cloudinary } from 'cloudinary'
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+})
+
 export default async function handler(req, res) {
-  const { GoogleAuth } = await import('google-auth-library')
-  const { google } = await import('googleapis')
-
   try {
-    const auth = new GoogleAuth({
-      credentials: {
-        client_email: process.env.GOOGLE_CLIENT_EMAIL,
-        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-      },
-      scopes: ['https://www.googleapis.com/auth/drive.readonly'],
-    })
+    const result = await cloudinary.search
+      .expression('folder:gallery')
+      .sort_by('created_at', 'desc')
+      .max_results(100)
+      .execute()
 
-    const drive = google.drive({ version: 'v3', auth })
-
-    const response = await drive.files.list({
-      q: `'${process.env.GOOGLE_DRIVE_FOLDER_ID}' in parents and mimeType contains 'image/' and trashed = false`,
-      fields: 'files(id, name, mimeType)',
-      orderBy: 'name',
-    })
-
-    const files = response.data.files.map(file => ({
-      id: file.id,
-      name: file.name,
-      url: `/api/image?id=${file.id}`,
-      thumbnail: `/api/image?id=${file.id}`,
+    const files = result.resources.map(file => ({
+      id: file.asset_id,
+      name: file.display_name || file.filename,
+      url: file.secure_url,
+      thumbnail: cloudinary.url(file.public_id, {
+        width: 400,
+        height: 400,
+        crop: 'fill',
+        quality: 'auto',
+        fetch_format: 'auto',
+      }),
     }))
 
-    res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate')
+    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400')
     res.status(200).json({ files })
   } catch (error) {
-    console.error('Drive API error:', error)
+    console.error('Cloudinary error:', error)
     res.status(500).json({ error: 'Failed to fetch images' })
   }
 }
