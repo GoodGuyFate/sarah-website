@@ -108,7 +108,14 @@ function Gallery({ imageCache, setImageCache, onLightboxChange }) {
             className="gallery-item"
             onClick={() => setLightboxIndex(index)}
           >
-            <img src={image.thumbnail} alt={image.name} loading="lazy" />
+            <img
+              src={image.thumbnail}
+              alt={image.name}
+              loading="lazy"
+              onError={(e) => {
+                e.target.closest(".gallery-item").style.display = "none";
+              }}
+            />
           </div>
         ))}
       </div>

@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       }),
     }))
 
-    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400')
+    res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=86400')
     res.status(200).json({ files })
   } catch (error) {
     console.error('Cloudinary error:', error)
