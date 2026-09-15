@@ -50,7 +50,7 @@ function Contact() {
     <div className="contact page-transition">
       <div className="contact-inner">
         <div className="contact-text-wrap">
-          <h2 className="page-title">Contact</h2>
+          <h2 className="page-title">Get in touch</h2>
           <p className="about-text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
