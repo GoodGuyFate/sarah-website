@@ -4,7 +4,7 @@ function About() {
       <div className="about-inner">
         <div className="about-photo-wrap">
           <img
-            src="https://picsum.photos/seed/sarah/380/500"
+            src="/images/sarah.jpeg"
             alt="Sarah Malak"
             className="about-photo"
           />
