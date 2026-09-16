@@ -52,8 +52,8 @@ function App() {
             <div className="home-bottom">
               <div className="home-intro">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Original abstract works exploring colour, texture, and the
+                  quiet wonder of seeing something for the first time.
                 </p>
               </div>
               <div className="home-cta">
