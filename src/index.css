@@ -421,6 +421,30 @@ body {
   color: #c0392b;
 }
 
+.whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #1a1a1a;
+  text-decoration: none;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  /* border-bottom: 1px solid #1a1a1a; */
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+  margin-top: 0.5rem;
+}
+.whatsapp-link:hover {
+  opacity: 0.5;
+}
+.whatsapp-link svg {
+  width: 18px;
+  height: 18px;
+}
+
 .footer {
   text-align: center;
   padding: 2rem;
