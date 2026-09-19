@@ -14,9 +14,9 @@ export default async function handler(req, res) {
   }
 
   try {
-    const result = await resend.emails.send({
+    await resend.emails.send({
       from: "Sarah Malak Studio <hello@send.sarahmalak.com>",
-      to: "kbad2234@gmail.com",
+      to: "sarah.m.malak@gmail.com",
       replyTo: [email],
       subject: `New message from ${name}`,
       html: `
@@ -26,8 +26,6 @@ export default async function handler(req, res) {
     <p>${message}</p>
   `,
     });
-
-    console.log("Resend response:", result);
 
     res.status(200).json({ success: true });
   } catch (error) {
