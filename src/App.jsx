@@ -46,6 +46,10 @@ function App() {
       <main className="main-content">
         {currentView === "home" && (
           <div className="home page-transition">
+            <div className="home-quote">
+              <p>"All beauty points back to Him who is Beautiful"</p>
+              <span>— St. Maximus the Confessor</span>
+            </div>
             <div className="slideshow-wrapper">
               <Slideshow />
             </div>
