@@ -78,6 +78,7 @@ function Contact() {
             <input
               type="text"
               placeholder="Your Name"
+              maxLength={100}
               value={name}
               onChange={(e) => {
                 setName(e.target.value);
@@ -89,6 +90,7 @@ function Contact() {
             <input
               type="email"
               placeholder="Your Email"
+              maxLength={200}
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -100,6 +102,7 @@ function Contact() {
             <textarea
               placeholder="Your Message"
               rows="6"
+              maxLength={5000}
               value={message}
               onChange={(e) => {
                 setMessage(e.target.value);

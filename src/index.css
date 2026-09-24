@@ -346,6 +346,28 @@ body {
   object-fit: contain;
   display: block;
 }
+.lightbox-caption {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0.75rem 0 0;
+  text-align: center;
+  color: #ffffff;
+  opacity: 0.8;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+}
+.lightbox-swiper .swiper-zoom-container {
+  flex: 1;
+  min-height: 0;
+  height: auto;
+}
+.lightbox-swiper .swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .swiper-button-next,
 .swiper-button-prev {
   color: #ffffff !important;

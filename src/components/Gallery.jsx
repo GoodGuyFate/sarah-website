@@ -35,6 +35,7 @@ function Lightbox({ images, startIndex, onClose }) {
               <div className="swiper-zoom-container">
                 <img src={image.url} alt={image.name} />
               </div>
+              {image.size && <p className="lightbox-caption">{image.size}</p>}
             </SwiperSlide>
           ))}
         </Swiper>
